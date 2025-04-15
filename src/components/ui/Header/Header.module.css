@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-100);
+  border-bottom: 1px solid var(--bg-400);
+  padding: var(--space-2xs) var(--space-m) var(--space-2xs) var(--space-4xs);
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balanceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.balanceLabel {
+  color: var(--gray-600);
+  text-transform: uppercase;
+}
+
+.balanceValue {
+  color: var(--gray-800);
+} 

@@ -1,0 +1,27 @@
+.button {
+  width: 100%;
+  background-color: var(--dark-blue-400);
+  border: 1px solid var(--light-blue-500);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  color: var(--gray-800);
+  padding: var(--space-m) var(--space-xl);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0px 0px 8px 0px var(--light-blue-25-opacity),
+              0px 0px 12px 4px var(--dark-blue-600) inset;
+}
+
+.button:active {
+  background-color: var(--dark-blue-200);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.button:disabled {
+  background-color: var(--gray-200);
+  color: var(--gray-500);
+  cursor: not-allowed;
+  border-color: transparent;
+  box-shadow: none;
+}

@@ -1,0 +1,113 @@
+:root {
+  /* Heading Sizes */
+  --h1-size: 32px; 
+  --h2-size: 28px; 
+  --h3-size: 24px; 
+  --h4-size: 20px; 
+  --h5-size: 16px; 
+  
+  /* Text Sizes */
+  --body-size: 14px; 
+  --subtext-size: 12px; 
+  
+  /* Line Heights */
+  --h1-line-height: 42px;
+  --h2-line-height: 36px;
+  --h3-line-height: 32px;
+  --h4-line-height: 26px;
+  --h5-line-height: 22px;
+  --body-line-height: 18px;
+  --subtext-line-height: 16px;
+}
+
+/* Typography Classes */
+/* H1 */
+.h1-medium {
+  font-size: var(--h1-size);
+  line-height: var(--h1-line-height);
+  font-weight: 500;
+}
+
+.h1-demibold {
+  font-size: var(--h1-size);
+  line-height: var(--h1-line-height);
+  font-weight: 600;
+}
+
+/* H2 */
+.h2-medium {
+  font-size: var(--h2-size);
+  line-height: var(--h2-line-height);
+  font-weight: 500;
+}
+
+.h2-demibold {
+  font-size: var(--h2-size);
+  line-height: var(--h2-line-height);
+  font-weight: 600;
+}
+
+/* H3 */
+.h3-medium {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line-height);
+  font-weight: 500;
+}
+
+.h3-demibold {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line-height);
+  font-weight: 600;
+}
+
+/* H4 */
+.h4-medium {
+  font-size: var(--h4-size);
+  line-height: var(--h4-line-height);
+  font-weight: 500;
+}
+
+.h4-demibold {
+  font-size: var(--h4-size);
+  line-height: var(--h4-line-height);
+  font-weight: 600;
+}
+
+/* H5 */
+.h5-medium {
+  font-size: var(--h5-size);
+  line-height: var(--h5-line-height);
+  font-weight: 500;
+}
+
+.h5-demibold {
+  font-size: var(--h5-size);
+  line-height: var(--h5-line-height);
+  font-weight: 600;
+}
+
+/* Body */
+.body-medium {
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  font-weight: 500;
+}
+
+.body-demibold {
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  font-weight: 600;
+}
+
+/* Subtext */
+.subtext-medium {
+  font-size: var(--subtext-size);
+  line-height: var(--subtext-line-height);
+  font-weight: 500;
+}
+
+.subtext-demibold {
+  font-size: var(--subtext-size);
+  line-height: var(--subtext-line-height);
+  font-weight: 600;
+} 
