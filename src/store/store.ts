@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import gameReducer from "./gameSlice";
+import walletReducer from "./walletSlice";
 
 export const store = configureStore({
   reducer: {
     game: gameReducer,
+    wallet: walletReducer,
   },
 });
 

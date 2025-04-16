@@ -27,3 +27,10 @@ export const useCalculateProfit = () => {
   );
   return () => (betAmount * currentMultiplier).toFixed(2);
 };
+
+// Wallet selectors
+export const useWallet = () => useAppSelector((state) => state.wallet);
+export const useWalletBalance = () =>
+  useAppSelector((state) => state.wallet.balance);
+export const useWalletStatus = () =>
+  useAppSelector((state) => state.wallet.status);
