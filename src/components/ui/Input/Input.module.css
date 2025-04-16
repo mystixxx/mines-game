@@ -1,0 +1,36 @@
+.inputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.label {
+  color: var(--gray-800);
+}
+
+.input {
+  width: 100%;
+  background-color: var(--bg-300);
+  border: 1px solid var(--bg-600);
+  border-radius: var(--border-radius-md);
+  color: var(--gray-800);
+  padding: var(--space-s) var(--space-xs) var(--space-s) var(--space-m);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--light-blue-500);
+}
+
+.input:disabled {
+  background-color: var(--bg-200);
+  border-color: var(--gray-200);
+  color: var(--gray-200);
+  cursor: not-allowed;
+}
+
+.inputContainer:has(.input:disabled) .label {
+  color: var(--gray-500);
+}

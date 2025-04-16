@@ -1,0 +1,66 @@
+.tile {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Default variant */
+.default {
+  background-color: var(--bg-400);
+  border-right: 1px solid var(--bg-600);
+  border-bottom: 1px solid var(--bg-600);
+}
+
+.default.revealed {
+  background-color: var(--bg-300);
+  border: 1px solid var(--bg-400);
+}
+
+/* Gem variant */
+.gem {
+  background-color: var(--gem-background);
+  border: 1px solid var(--gem-default);
+}
+
+.gem.revealed {
+  background-color: var(--bg-100);
+  border-color: var(--gem-revealed);
+}
+
+/* Bomb variant */
+.bomb {
+  background-color: var(--mine-background);
+  border: 1px solid var(--mine-default);
+}
+
+.bomb.revealed {
+  background-color: var(--bg-100);
+  border-color: var(--mine-revealed);
+}
+
+.assetContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 60%;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.asset {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.revealed .asset {
+  opacity: 0.4;
+}

@@ -6,69 +6,73 @@
   --border-radius-lg: 10px;
 
   /* Dark Blue */
-  --dark-blue-100: #1B009F;
-  --dark-blue-200: #2200C7;
-  --dark-blue-300: #2500D9;
-  --dark-blue-400: #2901ED;
-  --dark-blue-500: #2731F0;
-  --dark-blue-600: #3D46F2;
-  --dark-blue-700: #525AF3;
-  --dark-blue-800: #686FF5;
+  --dark-blue-100: #1b009f;
+  --dark-blue-200: #2200c7;
+  --dark-blue-300: #2500d9;
+  --dark-blue-400: #2901ed;
+  --dark-blue-500: #2731f0;
+  --dark-blue-600: #3d46f2;
+  --dark-blue-700: #525af3;
+  --dark-blue-800: #686ff5;
 
   /* Light Blue */
-  --light-blue-100: #0279F9;
-  --light-blue-200: #1B87FA;
-  --light-blue-300: #3594FA;
-  --light-blue-400: #35A5FA;
-  --light-blue-500: #3DB8FF;
-  --light-blue-600: #32C5FF;
-  --light-blue-700: #4CD2FF;
-  --light-blue-800: #73DAFF;
-  --light-blue-25-opacity: #1DABFF40;
+  --light-blue-100: #0279f9;
+  --light-blue-200: #1b87fa;
+  --light-blue-300: #3594fa;
+  --light-blue-400: #35a5fa;
+  --light-blue-500: #3db8ff;
+  --light-blue-600: #32c5ff;
+  --light-blue-700: #4cd2ff;
+  --light-blue-800: #73daff;
+  --light-blue-25-opacity: #1dabff40;
 
   /* Background Colors */
-  --bg-100: #12101C;
-  --bg-200: #19182B;
-  --bg-300: #1D1C34;
+  --bg-100: #12101c;
+  --bg-200: #19182b;
+  --bg-300: #1d1c34;
   --bg-400: #242545;
-  --bg-500: #2D2F55;
-  --bg-600: #373E65;
-  --bg-700: #444C7D;
-  --bg-800: #545D93;
+  --bg-500: #2d2f55;
+  --bg-600: #373e65;
+  --bg-700: #444c7d;
+  --bg-800: #545d93;
 
   /* Grayscale */
   --gray-100: #282847;
   --gray-200: #313151;
-  --gray-300: #3E3E5F;
-  --gray-400: #4A4A6E;
+  --gray-300: #3e3e5f;
+  --gray-400: #4a4a6e;
   --gray-500: #626283;
-  --gray-600: #82829C;
-  --gray-700: #A5A5B8;
-  --gray-800: #FFFFFF;
+  --gray-600: #82829c;
+  --gray-700: #a5a5b8;
+  --gray-800: #ffffff;
 
   /* Tile Colors */
   /* Gem Colors */
-  --gem-default: #AAFF00;
-  --gem-revealed: #53741A;
-  --gem-background: #061C04;
-  
+  --gem-default: #aaff00;
+  --gem-revealed: #53741a;
+  --gem-background: #061c04;
+
   /* Mine Colors */
-  --mine-default: #FF2424;
-  --mine-revealed: #751D28;
+  --mine-default: #ff2424;
+  --mine-revealed: #751d28;
   --mine-background: #220303;
 
+  /* Cashout Colors */
+  --cashout-default: #aaff0026;
+  --box-shadow-cashout: #c21e1c80;
+
   /* Spacing Scale */
-  --space-4xs: 4px;   /* 4px */
-  --space-3xs: 6px;   /* 6px */
-  --space-2xs: 8px;   /* 8px */
-  --space-xs: 10px;   /* 10px */
-  --space-s: 12px;    /* 12px */
-  --space-m: 14px;    /* 14px */
-  --space-l: 16px;    /* 16px */
-  --space-xl: 20px;   /* 20px */
-  --space-2xl: 24px;  /* 24px */
-  --space-3xl: 28px;  /* 28px */
-  --space-4xl: 32px;  /* 32px */
+  --space-4xs: 4px; /* 4px */
+  --space-3xs: 6px; /* 6px */
+  --space-2xs: 8px; /* 8px */
+  --space-xs: 10px; /* 10px */
+  --space-s: 12px; /* 12px */
+  --space-m: 14px; /* 14px */
+  --space-l: 16px; /* 16px */
+  --space-xl: 20px; /* 20px */
+  --space-2xl: 24px; /* 24px */
+  --space-3xl: 28px; /* 28px */
+  --space-4xl: 32px; /* 32px */
 }
 
 * {

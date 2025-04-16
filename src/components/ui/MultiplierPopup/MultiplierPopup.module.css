@@ -1,0 +1,24 @@
+.popup {
+  background-color: var(--cashout-default);
+  border: 1px solid var(--gem-default);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-l) var(--space-3xl);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4xs);
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 0px 8px 0px var(--box-shadow-cashout);
+}
+
+.multiplier {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--gray-800);
+}
+
+.amount {
+  color: var(--gray-800);
+}
