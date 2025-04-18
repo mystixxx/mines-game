@@ -7,7 +7,7 @@ import {
   useGrid,
   useGameStatus,
   useCurrentMultiplier,
-  useBetAmount,
+  useWinAmount,
 } from "@/store/hooks";
 import { handleTileClick } from "@/store/gameSlice";
 import styles from "@/app/page.module.css";
@@ -17,9 +17,7 @@ export function GameGrid() {
   const grid = useGrid();
   const gameState = useGameStatus();
   const currentMultiplier = useCurrentMultiplier();
-  const betAmount = useBetAmount();
-
-  // Determine if multiplier popup should be visible
+  const winAmount = useWinAmount();
   const showMultiplierPopup = gameState === "won";
 
   const onTileClick = (row: number, col: number) => {
@@ -37,7 +35,7 @@ export function GameGrid() {
         <div className={styles.multiplierPopup}>
           <MultiplierPopup
             multiplier={currentMultiplier}
-            amount={betAmount * currentMultiplier}
+            amount={winAmount}
           />
         </div>
       )}

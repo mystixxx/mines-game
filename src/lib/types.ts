@@ -3,8 +3,8 @@ import { TileVariant } from "@/components/ui/Tile/Tile";
 // Game tile type
 export type GameTile = {
   variant: TileVariant;
-  clicked: boolean; // User manually clicked this tile
-  revealed: boolean; // Auto-revealed during cashout/loss
+  clicked: boolean;
+  revealed: boolean;
 };
 
 // Game grid type
@@ -23,6 +23,6 @@ export type GameContextType = {
   handleTileClick: (row: number, col: number) => void;
   handlePlaceBet: () => void;
   handleCashout: () => void;
-  handleBetChange: (value: string) => void;
+  handleBetChange: (value: number) => void;
   calculateProfit: () => string;
 };

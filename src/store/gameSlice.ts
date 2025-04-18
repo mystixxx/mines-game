@@ -17,6 +17,7 @@ interface GameSliceState {
   betAmount: number;
   revealedGems: number;
   currentMultiplier: number;
+  winAmount: number;
 }
 
 // Create empty grid
@@ -63,6 +64,7 @@ const initialState: GameSliceState = {
   betAmount: INITIAL_BET,
   revealedGems: 0,
   currentMultiplier: INITIAL_MULTIPLIER,
+  winAmount: 0,
 };
 
 const gameSlice = createSlice({
@@ -136,6 +138,9 @@ const gameSlice = createSlice({
 
       // Set game state to won immediately to prevent further clicks
       state.gameState = "won";
+      
+      // Store the win amount at the time of cashout
+      state.winAmount = state.betAmount * state.currentMultiplier;
 
       // Reveal all remaining tiles
       state.grid = state.grid.map((row) =>
@@ -153,6 +158,7 @@ const gameSlice = createSlice({
       state.gameState = "idle";
       state.revealedGems = 0;
       state.currentMultiplier = INITIAL_MULTIPLIER;
+      state.winAmount = 0;
     },
   },
 });

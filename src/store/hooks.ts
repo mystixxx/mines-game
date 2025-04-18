@@ -19,6 +19,8 @@ export const useRevealedGems = () =>
   useAppSelector((state) => state.game.revealedGems);
 export const useCurrentMultiplier = () =>
   useAppSelector((state) => state.game.currentMultiplier);
+export const useWinAmount = () =>
+  useAppSelector((state) => state.game.winAmount);
 
 // Calculate profit helper
 export const useCalculateProfit = () => {

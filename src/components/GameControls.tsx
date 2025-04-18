@@ -37,8 +37,8 @@ export function GameControls() {
     dispatch(updateBalance(convertToDisplayBalance(balanceInCents)));
   };
 
-  const handleBetChange = (value: string) => {
-    dispatch(setBetAmount(parseFloat(value)));
+  const handleBetChange = (value: number) => {
+    dispatch(setBetAmount(value));
   };
 
   const handlePlaceBet = () => {
@@ -105,7 +105,7 @@ export function GameControls() {
     <div className={styles.controls}>
       <Input
         label="Bet Amount"
-        value={betAmount.toString()}
+        value={betAmount}
         onChange={handleBetChange}
         disabled={gameState === "playing"}
       />
@@ -124,12 +124,13 @@ export function GameControls() {
             disabled={isCashoutButtonDisabled}
           />
           <div className={styles.betInputs}>
-            <Input label="Mines" value={BOMB_COUNT.toString()} />
-            <Input label="Gems" value={GEM_COUNT.toString()} />
+            <Input label="Mines" value={BOMB_COUNT} disabled/>
+            <Input label="Gems" value={GEM_COUNT} disabled/>
           </div>
           <Input
             label={`Total Profit (${currentMultiplier.toFixed(2)}x)`}
-            value={profitDisplay}
+            value={Number(parseFloat(profitDisplay).toFixed(2))}
+            disabled
           />
         </>
       )}
