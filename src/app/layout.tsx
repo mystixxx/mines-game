@@ -3,6 +3,7 @@ import "@/styles/typography.css";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
+import Head from "next/head";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -12,7 +13,6 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	title: "Mines Game",
-	viewport: "initial-scale=1, width=device-width",
 	icons: {
 		icon: "/favicon.ico",
 	},
@@ -26,6 +26,9 @@ export default function RootLayout({
 
 	return (
 		<html className={`${inter.variable}`}>
+			<Head>	
+				<meta name="viewport" content="initial-scale=1, width=device-width" />
+			</Head>
 			<body>
 				<Toaster position="bottom-center" toastOptions={{
 					error: {
