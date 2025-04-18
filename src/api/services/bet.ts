@@ -105,11 +105,10 @@ export const placeBet = async (
         errorMessage = errorJson.message;
       }
     } catch (e) {
-      // If parsing fails, keep the default message
+      console.log(e);
     }
     
     toast.error(errorMessage);
-    throw new Error(errorMessage);
   }
 
   return response.json();
@@ -158,11 +157,10 @@ export const cashout = async (
         errorMessage = errorJson.message;
       }
     } catch (e) {
-      // If parsing fails, keep the default message
+      console.log(e);
     }
     
     toast.error(errorMessage);
-    throw new Error(errorMessage);
   }
 
   return response.json();
