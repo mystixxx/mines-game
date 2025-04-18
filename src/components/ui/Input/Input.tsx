@@ -47,6 +47,7 @@ export default function Input({
         step={0.01}
         min={0}
         placeholder="10,00"
+        pattern="[0-9]*\.?[0-9]*"
         value={inputString}
         onChange={handleChange}
         onKeyDown={(e) => {
