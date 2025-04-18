@@ -56,7 +56,7 @@ export default function Input({
           }
         }}
         disabled={disabled}
-        className={`${styles.input} ${className} body-medium`}
+        className={`${styles.input} ${className} h5-medium`}
       />
     </div>
   );

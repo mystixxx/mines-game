@@ -12,7 +12,6 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	title: "Mines Game",
-	viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 	icons: {
 		icon: "/favicon.ico",
 	},
