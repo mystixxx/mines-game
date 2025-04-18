@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import "@/styles/typography.css";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -15,8 +16,19 @@ export default function RootLayout({
 }>) {
 
 	return (
-		<html  className={`${inter.variable}`}>
-			<body>{children}</body>
+		<html className={`${inter.variable}`}>
+			<body>
+				<Toaster position="bottom-center" toastOptions={{
+					error: {
+						style: {
+							backgroundColor: "#242545",
+							color: "#fff",
+						},
+					},
+					duration: 3000,
+				}}/>
+				{children}
+			</body>
 		</html>
 	);
 }

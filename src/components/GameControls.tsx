@@ -7,33 +7,99 @@ import {
   useRevealedGems,
   useCurrentMultiplier,
   useCalculateProfit,
+  useWalletBalance,
 } from "@/store/hooks";
-import { initializeGrid, handleCashout, setBetAmount } from "@/store/gameSlice";
+import { initializeGrid, handleCashout as gameHandleCashout, setBetAmount } from "@/store/gameSlice";
 import { BOMB_COUNT, GEM_COUNT } from "@/lib/constants";
 import styles from "@/app/page.module.css";
+import { usePlaceBet, useCashout } from "@/api/hooks/useBet";
+import { updateBalance } from "@/store/walletSlice";
 
 export function GameControls() {
+  // Redux state and hooks
   const dispatch = useAppDispatch();
   const gameState = useGameStatus();
   const betAmount = useBetAmount();
   const revealedGems = useRevealedGems();
   const currentMultiplier = useCurrentMultiplier();
   const calculateProfit = useCalculateProfit();
+  const walletBalance = useWalletBalance();
+  
+  // API mutation hooks
+  const { mutate: placeBet, isPending: isPlacingBet } = usePlaceBet();
+  const { mutate: cashout, isPending: isCashingOut } = useCashout();
+
+  // Converts API balance (cents) to display balance (euros)
+  const convertToDisplayBalance = (balanceInCents: number): number => balanceInCents / 100;
+
+  // Updates wallet balance from API response
+  const updateWalletBalance = (balanceInCents: number): void => {
+    dispatch(updateBalance(convertToDisplayBalance(balanceInCents)));
+  };
 
   const handleBetChange = (value: string) => {
-    // Convert string to number
-    const numericValue = parseFloat(value) || 0;
-    dispatch(setBetAmount(numericValue));
+    dispatch(setBetAmount(parseFloat(value)));
   };
 
   const handlePlaceBet = () => {
     if (betAmount <= 0) return;
-    dispatch(initializeGrid());
+    
+    // Convert to cents for API
+    const betAmountInCents = Math.round(betAmount * 100);
+    
+    placeBet(
+      { betAmount: betAmountInCents },
+      {
+        onSuccess: (response) => {
+          // Update balance and initialize game
+          updateWalletBalance(response.balance);
+          dispatch(initializeGrid());
+        },
+      }
+    );
   };
 
-  const onCashout = () => {
-    dispatch(handleCashout());
+  const handleCashout = () => {
+    const profit = parseFloat(calculateProfit());
+    if (profit <= 0 || revealedGems === 0) return;
+    
+    // Expected balance after cashout
+    const expectedBalance = walletBalance + profit;
+    
+    // Convert to cents for API
+    const cashoutAmountInCents = Math.round(profit * 100);
+    
+    cashout(
+      { cashoutAmount: cashoutAmountInCents },
+      {
+        onSuccess: (response) => {
+          // Update balance
+          updateWalletBalance(response.balance);
+          
+          // Verify balance matches expected value
+          const receivedBalance = convertToDisplayBalance(response.balance);
+          if (Math.abs(receivedBalance - expectedBalance) > 0.01) {
+            console.warn("Balance mismatch after cashout", {
+              expected: expectedBalance,
+              received: receivedBalance
+            });
+          }
+          
+          dispatch(gameHandleCashout());
+        }
+      }
+    );
   };
+
+  // Determine if bet button should be disabled
+  const isBetButtonDisabled = isPlacingBet || betAmount <= 0;
+  
+  // Determine if cashout button should be disabled
+  const isCashoutButtonDisabled = isCashingOut || revealedGems === 0;
+
+  // Calculate profit display text
+  const profitDisplay = calculateProfit();
+  const cashoutButtonText = isCashingOut ? "Cashing Out..." : `Cashout ${profitDisplay} EUR`;
 
   return (
     <div className={styles.controls}>
@@ -45,13 +111,17 @@ export function GameControls() {
       />
 
       {gameState === "idle" || gameState === "won" || gameState === "lost" ? (
-        <Button text="Place Bet" onClick={handlePlaceBet} />
+          <Button 
+            text={isPlacingBet ? "Placing Bet..." : "Place Bet"} 
+            onClick={handlePlaceBet} 
+            disabled={isBetButtonDisabled}
+        />
       ) : (
         <>
           <Button
-            text={`Cashout ${calculateProfit()} EUR`}
-            onClick={onCashout}
-            disabled={revealedGems === 0}
+            text={cashoutButtonText}
+            onClick={handleCashout}
+            disabled={isCashoutButtonDisabled}
           />
           <div className={styles.betInputs}>
             <Input label="Mines" value={BOMB_COUNT.toString()} />
@@ -59,7 +129,7 @@ export function GameControls() {
           </div>
           <Input
             label={`Total Profit (${currentMultiplier.toFixed(2)}x)`}
-            value={calculateProfit()}
+            value={profitDisplay}
           />
         </>
       )}

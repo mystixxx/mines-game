@@ -10,6 +10,7 @@ import styles from "./page.module.css";
 import { useEffect } from "react";
 import { fetchWalletBalanceThunk } from "@/store/walletSlice";
 import { useAppDispatch, useWalletBalance } from "@/store/hooks";
+import { ReactQueryProvider } from "@/lib/react-query";
 
 function Game() {
   const dispatch = useAppDispatch();
@@ -19,7 +20,7 @@ function Game() {
     dispatch(fetchWalletBalanceThunk())
       .unwrap()
       .catch((error) => {
-        console.error("Failed to fetch wallet balance:", error);
+        console.log("Failed to fetch wallet balance:", error);
       });
   }, [dispatch]);
 
@@ -44,7 +45,9 @@ function Game() {
 export default function Home() {
   return (
     <Provider store={store}>
-      <Game />
+      <ReactQueryProvider>
+        <Game />
+      </ReactQueryProvider>
     </Provider>
   );
 }

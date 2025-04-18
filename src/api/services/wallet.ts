@@ -1,5 +1,6 @@
 import { API_CONFIG } from "../config";
 import { API_ROUTES } from "../routes";
+import toast from "react-hot-toast";
 
 export interface WalletBalanceResponse {
   status: {
@@ -36,7 +37,19 @@ export const fetchWalletBalance = async (
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Failed to fetch wallet balance: ${errorText}`);
+    let errorMessage = `Failed to fetch wallet balance`;
+    
+    try {
+      const errorJson = JSON.parse(errorText);
+      if (errorJson.message) {
+        errorMessage = errorJson.message;
+      }
+    } catch (e) {
+      // If parsing fails, keep the default message
+    }
+    
+    toast.error(errorMessage);
+    throw new Error(errorMessage);
   }
 
   return response.json();

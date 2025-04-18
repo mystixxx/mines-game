@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import styles from "./Input.module.css";
 
 interface InputProps {
@@ -16,15 +16,8 @@ export default function Input({
   className = "",
   label = "Bet Amount",
 }: InputProps) {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // Allow only numbers and decimal point
-    const newValue = e.target.value.replace(/[^0-9.]/g, "");
-
-    // Prevent multiple decimal points
-    const decimalCount = (newValue.match(/\./g) || []).length;
-    if (decimalCount > 1) return;
-
-    onChange?.(newValue);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.value);
   };
 
   return (
